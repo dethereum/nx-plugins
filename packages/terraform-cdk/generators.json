@@ -3,10 +3,10 @@
   "name": "terraform-cdk",
   "version": "0.0.1",
   "generators": {
-    "terraform-cdk": {
-      "factory": "./src/generators/terraform-cdk/generator",
-      "schema": "./src/generators/terraform-cdk/schema.json",
-      "description": "terraform-cdk generator"
+    "init-standalone": {
+      "factory": "./src/generators/init-standalone/generator",
+      "schema": "./src/generators/init-standalone/schema.json",
+      "description": "init-standalone generator"
     }
   }
 }
