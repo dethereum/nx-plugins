@@ -6,7 +6,9 @@
     "commit": "git-cz",
     "format": "nx format:check",
     "format:fix": "nx format:write",
-    "lint": "nx run-many --all --target=lint"
+    "lint": "nx run-many --all --target=lint",
+    "test": "nx run-many --all --target=test",
+    "e2e": "nx run-many --all --target=e2e"
   },
   "config": {
     "commitizen": {
