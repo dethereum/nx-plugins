@@ -69,3 +69,4 @@ jobs:
                 summary: "my *check* summary",
                 text: "my text",
               },
+            });
