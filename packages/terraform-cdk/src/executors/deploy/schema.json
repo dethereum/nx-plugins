@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "cli": "nx",
+  "title": "Deploy executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "autoApprove": {
+      "description": "Auto approve flag",
+      "type": "boolean"
+    },
+    "stack": {
+      "description": "Cdktf stack name",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "buildTargets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "configuration": {
+            "type": "string"
+          }
+        },
+        "required": ["project", "target"]
+      }
+    }
+  },
+  "required": []
+}

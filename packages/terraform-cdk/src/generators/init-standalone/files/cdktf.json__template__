@@ -1,11 +1,4 @@
 {
   "language": "typescript",
-  "app": "npx ts-node main.ts",
-  "sendCrashReports": "false",
-  "terraformProviders": [],
-  "terraformModules": [],
-  "context": {
-    "excludeStackIdFromLogicalIds": "true",
-    "allowSepCharsInLogicalIds": "true"
-  }
+  "app": "npx ts-node main.ts"
 }
