@@ -6,7 +6,7 @@ import {
   uniq,
 } from '@nrwl/nx-plugin/testing';
 
-import * as AWS from 'aws-sdk';
+import { S3Client, ListBucketsCommand } from '@aws-sdk/client-s3';
 
 const setupProjectJson = (project: string) => `{
   "name": "${project}",
@@ -83,10 +83,10 @@ describe('terraform-cdk deploy executor', () => {
     const project = uniq('terraform-cdk');
     const expectedBucketName = 'mock-bucket';
 
-    const s3Client = new AWS.S3({
+    const s3Client = new S3Client({
       region: 'us-east-1',
       endpoint: 'http://localhost:4566',
-      s3ForcePathStyle: true,
+      forcePathStyle: true,
     });
 
     await runNxCommandAsync(
@@ -103,7 +103,7 @@ describe('terraform-cdk deploy executor', () => {
 
     await runNxCommandAsync(`run ${project}:deploy`);
 
-    const list = await s3Client.listBuckets().promise();
+    const list = await s3Client.send(new ListBucketsCommand({}));
 
     expect(list.Buckets![0].Name).toEqual(expectedBucketName);
   }, 120000);
