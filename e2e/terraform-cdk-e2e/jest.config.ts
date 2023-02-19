@@ -1,7 +1,8 @@
-/* eslint-disable */
+const nxPreset = require('@nrwl/jest/preset').default;
+
 export default {
   displayName: 'terraform-cdk-e2e',
-  preset: '../../jest.preset.js',
+  preset: '@blueground/jest-testcontainers',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -12,4 +13,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/e2e/terraform-cdk-e2e',
+  ...nxPreset,
 };

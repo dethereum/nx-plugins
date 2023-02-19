@@ -20,6 +20,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@blueground/jest-testcontainers": "^3.0.3",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "^17.4.4",
@@ -40,6 +41,7 @@
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "aws-sdk": "^2.1318.0",
     "commitizen": "^4.3.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
@@ -47,6 +49,7 @@
     "inquirer": "8",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jest-environment-node": "^29.4.3",
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "15.7.2",
     "prettier": "^2.6.2",

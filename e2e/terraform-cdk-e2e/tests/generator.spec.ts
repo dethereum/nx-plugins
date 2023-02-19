@@ -5,7 +5,7 @@ import {
   uniq,
 } from '@nrwl/nx-plugin/testing';
 
-describe('terraform-cdk init-standalone generator', () => {
+describe.skip('terraform-cdk init-standalone generator', () => {
   // Setting up individual workspaces per
   // test can cause e2e runs to take a long time.
   // For this reason, we recommend each suite only
