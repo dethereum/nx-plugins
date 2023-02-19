@@ -1,5 +1,5 @@
 import type { ExecutorContext } from '@nrwl/devkit';
-import * as spawn from '@expo/spawn-async';
+import spawn from '@expo/spawn-async';
 
 import type { DeployExecutorSchema } from './schema';
 
