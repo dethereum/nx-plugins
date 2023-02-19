@@ -4,8 +4,10 @@ on:
     branches:
       - main
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     steps:
       - name: checkout code repository
         uses: actions/checkout@v3
