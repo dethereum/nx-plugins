@@ -65,7 +65,6 @@ jobs:
               // Careful, code injection can happen.
               conclusion: "${{ job.status }}",
               // This is safe, not string interpolation.
-              details_url: process.env.parameter_url,
               output: {
                 title: "my check title",
                 summary: "my *check* summary",
