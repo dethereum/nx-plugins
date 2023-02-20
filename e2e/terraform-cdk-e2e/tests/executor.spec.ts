@@ -27,7 +27,12 @@ const setupProjectJson = (project: string) => `{
 }
 `;
 
-const setupStack = (project: string, bucketName: string) => `
+const setupStack = (props: {
+  project: string;
+  bucketName: string;
+  accessKeyId: string;
+  secretAccessKey: string;
+}) => `
 import { Construct } from 'constructs';
 import { App, TerraformStack } from 'cdktf';
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
@@ -39,6 +44,8 @@ class MyStack extends TerraformStack {
 
     new AwsProvider(this, "mock", {
       region: 'us-east-1',
+      accessKey: "${props.accessKeyId}",
+      secretKey: "${props.secretAccessKey}",
       s3UsePathStyle: true,
       skipCredentialsValidation: true,
       skipMetadataApiCheck: "true",
@@ -49,13 +56,13 @@ class MyStack extends TerraformStack {
     })
 
     const bucket = new S3Bucket(this, 'aws_s3_bucket', {
-      bucket: "${bucketName}",
+      bucket: "${props.bucketName}",
     });
   }
 }
 
 const app = new App();
-new MyStack(app, '${project}');
+new MyStack(app, '${props.project}');
 app.synth();
 `;
 
@@ -81,12 +88,18 @@ describe('terraform-cdk deploy executor', () => {
 
   it('can successfully deploy to localstack', async () => {
     const project = uniq('terraform-cdk');
+    const credentials = {
+      accessKeyId: 'fake',
+      secretAccessKey: 'fake',
+    };
+
     const expectedBucketName = 'mock-bucket';
 
     const s3Client = new S3Client({
       region: 'us-east-1',
       endpoint: 'http://localhost:4566',
       forcePathStyle: true,
+      credentials,
     });
 
     await runNxCommandAsync(
@@ -98,7 +111,7 @@ describe('terraform-cdk deploy executor', () => {
     updateFile(`apps/${project}/project.json`, setupProjectJson(project));
     updateFile(
       `apps/${project}/main.ts`,
-      setupStack(project, expectedBucketName)
+      setupStack({ project, bucketName: expectedBucketName, ...credentials })
     );
 
     await runNxCommandAsync(`run ${project}:deploy`);
