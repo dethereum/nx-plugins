@@ -1,5 +1,6 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 import spawn from '@expo/spawn-async';
+import { npmRunPathEnv } from 'npm-run-path';
 
 import type { DeployExecutorSchema } from './schema';
 
@@ -33,8 +34,12 @@ export default async function runExecutor(
     typeof options.stack == 'string' ? options.stack : options.stack.join(' '),
   ];
 
+  const cwd = infrastructureRoot;
+  const env = options.preferLocal ? npmRunPathEnv({ cwd }) : process.env;
+
   const cdktf = spawn('cdktf', cdktfArgs, {
-    cwd: infrastructureRoot,
+    cwd,
+    env,
     stdio: [process.stdin, process.stdout, process.stderr],
   });
 

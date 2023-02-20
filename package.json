@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "@expo/spawn-async": "^1.7.0",
-    "@swc/helpers": "~0.4.11"
+    "@swc/helpers": "~0.4.11",
+    "npm-run-path": "npm:@esm2cjs/npm-run-path@5.1.1-cjs.0"
   }
 }

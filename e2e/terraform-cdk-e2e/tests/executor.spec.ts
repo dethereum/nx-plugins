@@ -19,7 +19,8 @@ const setupProjectJson = (project: string) => `{
       "options": {
         "buildTargets": [],
         "stack": "${project}",
-        "autoApprove": true
+        "autoApprove": true,
+        "preferLocal": true
       }
     }
   },
@@ -106,7 +107,9 @@ describe('terraform-cdk deploy executor', () => {
       `generate @dethereum/nx-terraform-cdk:init-standalone ${project}`
     );
 
-    await runCommandAsync('pnpm add constructs cdktf @cdktf/provider-aws');
+    await runCommandAsync(
+      'pnpm add constructs cdktf cdktf-cli @cdktf/provider-aws'
+    );
 
     updateFile(`apps/${project}/project.json`, setupProjectJson(project));
     updateFile(
@@ -118,6 +121,6 @@ describe('terraform-cdk deploy executor', () => {
 
     const list = await s3Client.send(new ListBucketsCommand({}));
 
-    expect(list.Buckets![0].Name).toEqual(expectedBucketName);
+    expect(list?.Buckets?.[0].Name).toEqual(expectedBucketName);
   }, 120000);
 });

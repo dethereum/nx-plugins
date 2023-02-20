@@ -10,6 +10,10 @@
       "description": "Auto approve flag",
       "type": "boolean"
     },
+    "preferLocal": {
+      "description": "Flag to use locally installed binary or not",
+      "type": "boolean"
+    },
     "stack": {
       "description": "Cdktf stack name",
       "oneOf": [

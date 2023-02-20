@@ -6,4 +6,5 @@ export interface DeployExecutorSchema {
   }>;
   stack?: string | string[];
   autoApprove?: boolean;
+  preferLocal?: boolean;
 }
