@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "./bin",
     "rootDir": "./src",
-    "types": ["node"]
+    "types": ["node"],
+    "module": "CommonJS",
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "cdktf.out"]
 }

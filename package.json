@@ -20,6 +20,8 @@
   },
   "private": true,
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.272.0",
+    "@blueground/jest-testcontainers": "^3.0.3",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "^17.4.4",
@@ -47,6 +49,7 @@
     "inquirer": "8",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jest-environment-node": "^29.4.3",
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "15.7.2",
     "prettier": "^2.6.2",
@@ -55,6 +58,8 @@
     "typescript": "~4.8.2"
   },
   "dependencies": {
-    "@swc/helpers": "~0.4.11"
+    "@expo/spawn-async": "^1.7.0",
+    "@swc/helpers": "~0.4.11",
+    "npm-run-path": "npm:@esm2cjs/npm-run-path@5.1.1-cjs.0"
   }
 }
